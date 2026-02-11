@@ -54,24 +54,6 @@ public class Bomb : MonoBehaviour
 
     private void OnRelease(SelectExitEventArgs args)
     {
-        if (rb != null && sledRigidbody != null)
-        {
-            GameObject interactorObject = (args.interactorObject as MonoBehaviour)?.gameObject;
-
-            if (interactorObject != null)
-            {
-                Rigidbody interactorRB = interactorObject.GetComponent<Rigidbody>();
-
-                if (interactorRB != null)
-                {
-                    Vector3 handVelocity = interactorRB.linearVelocity;
-                    Vector3 relativeThrowVelocity = handVelocity - sledRigidbody.linearVelocity;
-                    rb.linearVelocity = relativeThrowVelocity;
-                    rb.angularVelocity = interactorRB.angularVelocity;
-                }
-            }
-        }
-
         if (rb != null)
         {
             rb.isKinematic = false;
@@ -80,3 +62,4 @@ public class Bomb : MonoBehaviour
         Destroy(gameObject, 8f);
     }
 }
+
